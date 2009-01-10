@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= @pagetitle || (@page && @page.title) || 'It is Simple WebApp' %></title>
+	<%= stylesheet_link_tag 'learningrails' %>  
+</head>
+<body>
+<div id='pagewrapper'>
+
+	<div id='header'>
+		<p>RailsPresentationGroup Sample Application</p>
+	</div>
+		  
+<div id='navbar'>
+	<ul>
+		<li><%= link_to 'Home', view_page_path('home') %></li>
+		<li><%= link_to 'AboutUs', view_page_path('about') %></li>
+		<li><%= link_to 'ContactUs', view_page_path('contact') %></li>
+		<% if logged_in? %>
+			<li><%= link_to 'Logout', logout_path %></li>
+			<li><%= link_to 'UseresAdmin', 'users' %></li>
+			<li><%= link_to 'PageingAdmin', 'pages' %></li>
+		<% else %>
+			<li><%= link_to 'Login', login_path %></li>
+		<% end %>
+		</li>
+	</ul>
+</div> 
+
+<div id='content'>
+<h2> <%= flash[:notice] %>	</h2>
+	<%= yield  %>
+</div>
+
+
+	<div id='footer'>
+		<p>PoweredByAliRezaTaleghani<br>MahdiLeghayi-AmirHosseinSohrabiyan</p>
+	</div>
+</div>
+</body>
+</html>
